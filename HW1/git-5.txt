@@ -1,0 +1,188 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20240502110841
+Username: COMPUTER\fahim
+RunAs User: COMPUTER\fahim
+Configuration Name: 
+Machine: COMPUTER (Microsoft Windows NT 10.0.22631.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 17584
+PSVersion: 5.1.22621.2506
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.22621.2506
+BuildVersion: 10.0.22621.2506
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is C:\Spring2024\ECE461L\HW1\git-5.txt
+PS C:\Spring2024\ECE461L\HW1> cd "C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing"
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing> .\setup.ps1
+Initialized empty Git repository in C:/Spring2024/ECE461L/HW1/git-katas/basic-stashing/exercise/.git/
+
+
+
+[master (root-commit) 6f46003] Initial commit
+ 2 files changed, 2 insertions(+)
+ create mode 100644 file.txt
+ create mode 100644 fix.txt
+
+[master bb77118] add bug.txt
+ 1 file changed, 1 insertion(+)
+ create mode 100644 bug.txt
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> echo 'Exploring work in the working directory...'
+
+Exploring work in the working directory...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> git status
+
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   file.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   file.txt
+        modified:   fix.txt
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> echo 'Exploring staged work...'
+
+Exploring staged work...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> git diff --staged
+
+diff --git a/file.txt b/file.txt
+index 746e5bd..dbdf3fe 100644
+--- a/file.txt
++++ b/file.txt
+@@ -1 +1,2 @@
+ Initial content of the file
++some changes I made and staged
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> echo 'Viewing commit log...'
+
+Viewing commit log...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> git log --oneline
+
+bb77118 (HEAD -> master) add bug.txt
+6f46003 Initial commit
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> echo 'Stashing current work...'
+
+Stashing current work...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> git stash push -m "Stashing work"
+
+Saved working directory and index state On master: Stashing work
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> echo 'Work stashed.'
+
+Work stashed.
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> echo 'Exploring repository after stashing...'
+
+Exploring repository after stashing...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> git status
+
+On branch master
+nothing to commit, working tree clean
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> echo 'Viewing stash list...'
+
+Viewing stash list...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> git stash list
+
+stash@{0}: On master: Stashing work
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> echo 'Fixing typo in bug.txt...'
+
+Fixing typo in bug.txt...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> Set-Content bug.txt 'Corrected content'
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> git add bug.txt
+
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> git commit -m "Fix typo in bug.txt"
+
+[master 13af49b] Fix typo in bug.txt
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> echo 'Typo fixed and changes committed.'
+
+Typo fixed and changes committed.
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> echo 'Applying stash to master...'
+
+Applying stash to master...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> git stash apply
+
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   file.txt
+        modified:   fix.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> echo 'Stash applied.'
+
+Stash applied.
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> git status
+
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   file.txt
+        modified:   fix.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> echo 'Resetting repository to HEAD...'
+
+Resetting repository to HEAD...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> git reset --hard HEAD
+
+HEAD is now at 13af49b Fix typo in bug.txt
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> echo 'Reset complete.'
+
+Reset complete.
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> echo 'Applying stash to master with index...'
+
+Applying stash to master with index...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> git stash apply --index
+
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   file.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   file.txt
+        modified:   fix.txt
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> echo 'Stash applied with index.'
+
+Stash applied with index.
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> git status
+
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   file.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   file.txt
+        modified:   fix.txt
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> echo 'Dropping the stash...'
+
+Dropping the stash...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> git stash drop
+
+Dropped refs/stash@{0} (9847d3f54a44a9b5fd99f8d57a8d2a72d0493651)
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> echo 'Stash dropped.'
+
+Stash dropped.
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> git stash list
+
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-stashing\exercise> Stop-Transcript
+
+**********************
+Windows PowerShell transcript end
+End time: 20240502112002
+**********************

@@ -1,0 +1,97 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20240502112131
+Username: COMPUTER\fahim
+RunAs User: COMPUTER\fahim
+Configuration Name: 
+Machine: COMPUTER (Microsoft Windows NT 10.0.22631.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 17584
+PSVersion: 5.1.22621.2506
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.22621.2506
+BuildVersion: 10.0.22621.2506
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is C:\Spring2024\ECE461L\HW1\git-6.txt
+PS C:\Spring2024\ECE461L\HW1> cd "C:\Spring2024\ECE461L\HW1\git-katas\merge-conflict"
+PS C:\Spring2024\ECE461L\HW1\git-katas\merge-conflict> .\setup.ps1
+Initialized empty Git repository in C:/Spring2024/ECE461L/HW1/git-katas/merge-conflict/exercise/.git/
+
+
+
+[master (root-commit) a2877be] Add file greeting.txt
+ 1 file changed, 1 insertion(+)
+ create mode 100644 greeting.txt
+
+[master 09a9a47] Add content to greeting.txt
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Switched to a new branch 'merge-conflict-branch1'
+
+[merge-conflict-branch1 4fb0d9f] add relevant fact
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file.txt
+Switched to branch 'master'
+
+[master e64ddf4] add indispensable truth!
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file.txt
+PS C:\Spring2024\ECE461L\HW1\git-katas\merge-conflict\exercise> echo 'Merging merge-conflict-branch1 onto master...'
+
+Merging merge-conflict-branch1 onto master...
+PS C:\Spring2024\ECE461L\HW1\git-katas\merge-conflict\exercise> git merge merge-conflict-branch1
+
+Auto-merging file.txt
+CONFLICT (add/add): Merge conflict in file.txt
+Automatic merge failed; fix conflicts and then commit the result.
+PS C:\Spring2024\ECE461L\HW1\git-katas\merge-conflict\exercise> echo 'Checking git status post-merge attempt...'
+
+Checking git status post-merge attempt...
+PS C:\Spring2024\ECE461L\HW1\git-katas\merge-conflict\exercise> git status
+
+On branch master
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both added:      file.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\Spring2024\ECE461L\HW1\git-katas\merge-conflict\exercise> echo 'Marking the conflict as resolved by adding file.txt...'
+
+Marking the conflict as resolved by adding file.txt...
+PS C:\Spring2024\ECE461L\HW1\git-katas\merge-conflict\exercise> git add file.txt
+
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\merge-conflict\exercise> echo 'Completing the merge with a commit...'
+
+Completing the merge with a commit...
+PS C:\Spring2024\ECE461L\HW1\git-katas\merge-conflict\exercise> git commit -m "Resolved merge conflict in file.txt"
+
+[master d66eb80] Resolved merge conflict in file.txt
+PS C:\Spring2024\ECE461L\HW1\git-katas\merge-conflict\exercise> echo 'Checking the git log with graph to confirm merge...'
+
+Checking the git log with graph to confirm merge...
+PS C:\Spring2024\ECE461L\HW1\git-katas\merge-conflict\exercise> git log --oneline --graph
+
+*   d66eb80 (HEAD -> master) Resolved merge conflict in file.txt
+|\
+| * 4fb0d9f (merge-conflict-branch1) add relevant fact
+* | e64ddf4 add indispensable truth!
+|/
+* 09a9a47 Add content to greeting.txt
+* a2877be Add file greeting.txt
+PS C:\Spring2024\ECE461L\HW1\git-katas\merge-conflict\exercise> echo 'Transcript stopped.'
+
+Transcript stopped.
+PS C:\Spring2024\ECE461L\HW1\git-katas\merge-conflict\exercise> Stop-Transcript
+
+**********************
+Windows PowerShell transcript end
+End time: 20240502113338
+**********************

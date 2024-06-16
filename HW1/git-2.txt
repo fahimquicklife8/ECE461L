@@ -1,0 +1,205 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20240501222608
+Username: COMPUTER\fahim
+RunAs User: COMPUTER\fahim
+Configuration Name: 
+Machine: COMPUTER (Microsoft Windows NT 10.0.22631.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 15180
+PSVersion: 5.1.22621.2506
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.22621.2506
+BuildVersion: 10.0.22621.2506
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is C:\Spring2024\ECE461L\HW1\git-2.txt
+PS C:\Spring2024\ECE461L\HW1> cd "C:\Spring2024\ECE461L\HW1\git-katas\basic-staging"
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> echo 'Checking the content of file.txt...'
+
+Checking the content of file.txt...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> Get-Content file.txt
+
+Get-Content : Cannot find path 'C:\Spring2024\ECE461L\HW1\git-katas\basic-staging\file.txt' because it does not exist.
+At line:1 char:1
++ Get-Content file.txt
++ ~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Spring2024\E...taging\file.txt:String) [Get-Content], 
+ItemNotFoundException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+Get-Content : Cannot find path 'C:\Spring2024\ECE461L\HW1\git-katas\basic-staging\file.txt'
+because it does not exist.
+At line:1 char:1
++ Get-Content file.txt
++ ~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Spring2024\E...taging\file.txt:String) [Get-Con
+   tent], ItemNotFoundException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> New-Item file.txt -ItemType "file"
+
+
+
+    Directory: C:\Spring2024\ECE461L\HW1\git-katas\basic-staging
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          5/1/2024  10:31 PM              0 file.txt
+
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> echo 'New file file.txt created.'
+New file file.txt created.
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> echo 'Overwriting the content in file.txt to "2"...'
+
+Overwriting the content in file.txt to "2"...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> Set-Content file.txt '2'
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> echo 'Content in file.txt is now "2".'
+Content in file.txt is now "2".
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> echo 'Checking differences with git diff...'
+
+Checking differences with git diff...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> git diff
+
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> echo 'Checking for staged changes with git diff --staged...'
+
+Checking for staged changes with git diff --staged...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> git diff --staged
+
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> echo 'Adding file.txt to the staging area...'
+
+Adding file.txt to the staging area...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> git add file.txt
+
+warning: in the working copy of 'basic-staging/file.txt', CRLF will be replaced by LF the next time
+ Git touches it
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> echo 'File.txt added to the staging area.'
+File.txt added to the staging area.
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> echo 'Overwriting the content in file.txt to "3"...'
+
+Overwriting the content in file.txt to "3"...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> Set-Content file.txt '3'
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> echo 'Content in file.txt is now "3".'
+Content in file.txt is now "3".
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> echo 'Checking differences with git diff...'
+
+Checking differences with git diff...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> git diff
+
+warning: in the working copy of 'basic-staging/file.txt', CRLF will be replaced by LF the next time
+ Git touches it
+diff --git a/basic-staging/file.txt b/basic-staging/file.txt
+index 0cfbf08..00750ed 100644
+--- a/basic-staging/file.txt
++++ b/basic-staging/file.txt
+@@ -1 +1 @@
+-2
++3
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> Out-File -Append "C:\Spring2024\ECE461L\HW1\git-2.txt"
+>> TerminatingError(Out-File): "The process cannot access the file 'C:\Spring2024\ECE461L\HW1\git-2.txt' because it is being used by another process."
+Out-File : The process cannot access the file 'C:\Spring2024\ECE461L\HW1\git-2.txt' because it is being used by another 
+process.
+At line:1 char:1
++ Out-File -Append "C:\Spring2024\ECE461L\HW1\git-2.txt"
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], IOException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+Out-File : The process cannot access the file 'C:\Spring2024\ECE461L\HW1\git-2.txt' because it is
+being used by another process.
+At line:1 char:1
++ Out-File -Append "C:\Spring2024\ECE461L\HW1\git-2.txt"
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], IOException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> git diff
+warning: in the working copy of 'basic-staging/file.txt', CRLF will be replaced by LF the next time
+ Git touches it
+diff --git a/basic-staging/file.txt b/basic-staging/file.txt
+index 0cfbf08..00750ed 100644
+--- a/basic-staging/file.txt
++++ b/basic-staging/file.txt
+@@ -1 +1 @@
+-2
++3
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> echo 'Checking for staged changes with git diff --staged...'
+
+Checking for staged changes with git diff --staged...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> git diff --staged
+
+diff --git a/basic-staging/file.txt b/basic-staging/file.txt
+new file mode 100644
+index 0000000..0cfbf08
+--- /dev/null
++++ b/basic-staging/file.txt
+@@ -0,0 +1 @@
++2
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> git diff --staged
+diff --git a/basic-staging/file.txt b/basic-staging/file.txt
+new file mode 100644
+index 0000000..0cfbf08
+--- /dev/null
++++ b/basic-staging/file.txt
+@@ -0,0 +1 @@
++2
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> echo 'Running git status to observe file.txt...'
+
+Running git status to observe file.txt...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> git status
+
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   file.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   file.txt
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> echo 'Unstaging changes in file.txt...'
+
+Unstaging changes in file.txt...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> git restore --staged file.txt
+
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> echo 'Changes in file.txt have been unstaged.'
+Changes in file.txt have been unstaged.
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> echo 'Running git status after unstaging changes...'
+
+Running git status after unstaging changes...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> git status
+
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        file.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> echo 'Staging and committing the changes...'
+
+Staging and committing the changes...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> git add file.txt
+
+warning: in the working copy of 'basic-staging/file.txt', CRLF will be replaced by LF the next time
+ Git touches it
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> git commit -m "Updated file.txt to '3'"
+
+[master da75ccb] Updated file.txt to '3'
+ 1 file changed, 1 insertion(+)
+ create mode 100644 basic-staging/file.txt
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> echo 'Changes committed.'
+Changes committed.
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-staging> echo 'Checking the git log...'
+
+Checking the git log...

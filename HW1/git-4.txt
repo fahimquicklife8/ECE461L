@@ -1,0 +1,193 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20240502105704
+Username: COMPUTER\fahim
+RunAs User: COMPUTER\fahim
+Configuration Name: 
+Machine: COMPUTER (Microsoft Windows NT 10.0.22631.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 17584
+PSVersion: 5.1.22621.2506
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.22621.2506
+BuildVersion: 10.0.22621.2506
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is C:\Spring2024\ECE461L\HW1\git-4.txt
+PS C:\Spring2024\ECE461L\HW1> cd "C:\Spring2024\ECE461L\HW1\git-katas\basic-revert"
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert> .\setup.ps1
+Initialized empty Git repository in C:/Spring2024/ECE461L/HW1/git-katas/basic-revert/exercise/.git/
+
+
+
+[master (root-commit) d73722f] Add file greeting.txt
+ 1 file changed, 1 insertion(+)
+ create mode 100644 greeting.txt
+
+[master 89295d9] Add credentials to repository
+ 1 file changed, 1 insertion(+)
+ create mode 100644 credentials.txt
+
+[master 326773f] Add content to greeting.txt
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+[master 7137e8e] Overwrite greeting.txt
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> echo 'Viewing commit history...'
+
+Viewing commit history...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> git log --oneline
+
+7137e8e (HEAD -> master) Overwrite greeting.txt
+326773f Add content to greeting.txt
+89295d9 Add credentials to repository
+d73722f Add file greeting.txt
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> echo "overwriting greet.txt"
+overwriting greet.txt
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> echo 'Viewing content of greeting.txt...'
+
+Viewing content of greeting.txt...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> Get-Content greeting.txt
+
+This should have been appended to the original content, rather than overwriting it
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> echo "This should have been appended to the original content, rather than overwriting it"
+This should have been appended to the original content, rather than overwriting it
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> echo 'Reverting the latest commit...'
+
+Reverting the latest commit...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> git revert --no-edit HEAD
+
+[master 69930b2] Revert "Overwrite greeting.txt"
+ Date: Thu May 2 11:03:28 2024 -0500
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> echo 'Viewing commit history after revert...'
+
+Viewing commit history after revert...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> git log --oneline
+
+69930b2 (HEAD -> master) Revert "Overwrite greeting.txt"
+7137e8e Overwrite greeting.txt
+326773f Add content to greeting.txt
+89295d9 Add credentials to repository
+d73722f Add file greeting.txt
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> echo 'Viewing content of greeting.txt after revert...'
+
+Viewing content of greeting.txt after revert...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> Get-Content greeting.txt
+
+Original File Content
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> echo 'Listing content of the workspace...'
+
+Listing content of the workspace...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> Get-ChildItem
+
+
+
+    Directory: C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          5/2/2024  10:57 AM             21 credentials.txt
+-a----          5/2/2024  11:03 AM             23 greeting.txt
+
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> echo 'Finding commit SHA for adding credentials...'
+
+Finding commit SHA for adding credentials...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> git log --oneline
+
+69930b2 (HEAD -> master) Revert "Overwrite greeting.txt"
+7137e8e Overwrite greeting.txt
+326773f Add content to greeting.txt
+89295d9 Add credentials to repository
+d73722f Add file greeting.txt
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> echo 'Reverting the commit that added credentials...'
+
+Reverting the commit that added credentials...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> git revert --no-edit [SHA]
+
+fatal: bad revision '[SHA]'
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> echo 'Viewing commit history after reverting credentials...'
+
+Viewing commit history after reverting credentials...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> git log --oneline
+
+69930b2 (HEAD -> master) Revert "Overwrite greeting.txt"
+7137e8e Overwrite greeting.txt
+326773f Add content to greeting.txt
+89295d9 Add credentials to repository
+d73722f Add file greeting.txt
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> echo 'Listing content of the workspace after revert...'
+
+Listing content of the workspace after revert...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> git log --oneline
+69930b2 (HEAD -> master) Revert "Overwrite greeting.txt"
+7137e8e Overwrite greeting.txt
+326773f Add content to greeting.txt
+89295d9 Add credentials to repository
+d73722f Add file greeting.txt
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> git revert
+usage: git revert [--[no-]edit] [-n] [-m <parent-number>] [-s] [-S[<keyid>]] <commit>...
+   or: git revert (--continue | --skip | --abort | --quit)
+
+    --quit                end revert or cherry-pick sequence
+    --continue            resume revert or cherry-pick sequence
+    --abort               cancel revert or cherry-pick sequence
+    --skip                skip current commit and continue
+    --[no-]cleanup <mode> how to strip spaces and #comments from message
+    -n, --no-commit       don't automatically commit
+    --commit              opposite of --no-commit
+    -e, --[no-]edit       edit the commit message
+    -s, --[no-]signoff    add a Signed-off-by trailer
+    -m, --[no-]mainline <parent-number>
+                          select mainline parent
+    --[no-]rerere-autoupdate
+                          update the index with reused conflict resolution if possible
+    --[no-]strategy <strategy>
+                          merge strategy
+    -X, --[no-]strategy-option <option>
+                          option for merge strategy
+    -S, --[no-]gpg-sign[=<key-id>]
+                          GPG sign commit
+    --[no-]reference      use the 'reference' format to refer to commits
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> ls
+
+
+    Directory: C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          5/2/2024  10:57 AM             21 credentials.txt
+-a----          5/2/2024  11:03 AM             23 greeting.txt
+
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> echo "currently we have credentials.txt and greeting.txt"
+currently we have credentials.txt and greeting.txt
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> git show
+commit 69930b2ef0b8fa2af0f76d47bce23716fd8779f8 (HEAD -> master)
+Author: git-katas trainer bot <git-katas@example.com>
+Date:   Thu May 2 11:03:28 2024 -0500
+
+    Revert "Overwrite greeting.txt"
+
+    This reverts commit 7137e8e16fae12e1cfd09f27cfb487a560b539c6.
+
+diff --git a/greeting.txt b/greeting.txt
+index 625a70d..899f48c 100644
+--- a/greeting.txt
++++ b/greeting.txt
+@@ -1 +1 @@
+-This should have been appended to the original content, rather than overwriting it
++Original File Content
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> echo "TUTORIAL HAS BEEN COMPLETED AND WE WILL STOP TRANSCRIPT NOW"
+TUTORIAL HAS BEEN COMPLETED AND WE WILL STOP TRANSCRIPT NOW
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-revert\exercise> STOP-TRANSCRIPT
+**********************
+Windows PowerShell transcript end
+End time: 20240502110701
+**********************

@@ -1,0 +1,140 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20240426125350
+Username: COMPUTER\fahim
+RunAs User: COMPUTER\fahim
+Configuration Name: 
+Machine: COMPUTER (Microsoft Windows NT 10.0.22631.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 38328
+PSVersion: 5.1.22621.2506
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.22621.2506
+BuildVersion: 10.0.22621.2506
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is git-1.txt
+PS C:\Spring2024\ECE461L\HW1> Set-ExecutionPolicy RemoteSigned
+Execution Policy Change
+The execution policy helps protect you from scripts that you do not trust. Changing the execution policy might expose you to the security risks described in the about_Execution_Policies help topic at https:/go.microsoft.com/fwlink/?LinkID=135170. Do you want to change the execution policy?
+&Yes  Yes to &All  &No  No to A&ll  &Suspend
+A
+PS C:\Spring2024\ECE461L\HW1> cd C:\Spring2024\ECE461L\HW1\git-katas\basic-commits
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits> git init
+Reinitialized existing Git repository in C:/Spring2024/ECE461L/HW1/git-katas/basic-commits/.git/
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits> .\setup.ps1
+Initialized empty Git repository in C:/Spring2024/ECE461L/HW1/git-katas/basic-commits/exercise/.git/
+
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git log
+fatal: your current branch 'master' does not have any commits yet
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> echo "fatal, as current branch is master and does not have any commits" > git-1.txt
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> ParameterBinding(Out-File): name="InputObject"; value="fatal, as current branch is master and does not have any commits"
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> echo "I am on master branch" > git-1.txt
+>> ParameterBinding(Out-File): name="InputObject"; value="I am on master branch"
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git branch mybranch
+fatal: not a valid object name: 'master'
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git branch
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git switch mybranch
+fatal: invalid reference: mybranch
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git branch mybranch
+
+fatal: not a valid object name: 'master'
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git add git-1.txt
+
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git commit -m "Initial commit"
+
+[master (root-commit) 0e15096] Initial commit
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 git-1.txt
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git branch mybranch
+
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git switch mybranch
+Switched to branch 'mybranch'
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git status 
+On branch mybranch
+nothing to commit, working tree clean
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> echo "When switching between branches, the workspace updates to reflect the files and their content as they exist on the current branch. If a branch has specific changes that are not on another, switching to it will show those changes in the working directory."
+When switching between branches, the workspace updates to reflect the files and their content as they exist on the current branch. If a branch has specific changes that are not on another, switching to it will show those changes in the working directory.
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git branch
+  master
+* mybranch
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> echo "Now on mybranch branch, ready to continue."
+Now on mybranch branch, ready to continue.
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> echo "I did HW1" > file.txt
+>> ParameterBinding(Out-File): name="InputObject"; value="I did HW1"
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git init
+
+Reinitialized existing Git repository in C:/Spring2024/ECE461L/HW1/git-katas/basic-commits/exercise/.git/
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git add file1.txt
+fatal: pathspec 'file1.txt' did not match any files
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git commit -m "This is my first ever commit"
+On branch mybranch
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        file.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git log --oneline --graph
+
+* 0e15096 (HEAD -> mybranch, master) Initial commit
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git checkout -b mybranch
+
+fatal: a branch named 'mybranch' already exists
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git log --oneline --graph
+
+* 0e15096 (HEAD -> mybranch, master) Initial commit
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> echo "This is a new file." >file2.txt
+>> ParameterBinding(Out-File): name="InputObject"; value="This is a new file."
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git add file2.txt
+
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git commit -m "Add file2.txt"
+
+[mybranch acb43b6] Add file2.txt
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 file2.txt
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git log --oneline --graph --all
+
+* acb43b6 (HEAD -> mybranch) Add file2.txt
+* 0e15096 (master) Initial commit
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git checkout mybranch
+
+Already on 'mybranch'
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> ls
+
+
+
+    Directory: C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         4/29/2024   3:01 PM             24 file.txt
+-a----         4/29/2024   3:02 PM             44 file2.txt
+-a----         4/26/2024   1:01 PM             48 git-1.txt
+
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git diff mybranch master
+
+diff --git a/file2.txt b/file2.txt
+deleted file mode 100644
+index cfc694f..0000000
+Binary files a/file2.txt and /dev/null differ
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> exit
+**********************
+Windows PowerShell transcript end
+End time: 20240429150418
+**********************

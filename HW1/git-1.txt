@@ -1,0 +1,144 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20240501215030
+Username: COMPUTER\fahim
+RunAs User: COMPUTER\fahim
+Configuration Name: 
+Machine: COMPUTER (Microsoft Windows NT 10.0.22631.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 15180
+PSVersion: 5.1.22621.2506
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.22621.2506
+BuildVersion: 10.0.22621.2506
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is C:\Spring2024\ECE461L\HW1\git-1.txt
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits> cd "C:\Spring2024\ECE461L\HW1\git-katas\bad-commit"
+PS C:\Spring2024\ECE461L\HW1\git-katas\bad-commit> cd "C:\Spring2024\ECE461L\HW1\git-katas\basic-commits"
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits> .\setup.ps1
+Initialized empty Git repository in C:/Spring2024/ECE461L/HW1/git-katas/basic-commits/exercise/.git/
+
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> echo "I am on branch master with no commits yet"
+I am on branch master with no commits yet
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git log
+fatal: your current branch 'master' does not have any commits yet
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> echo "fatal, as current master branch does not have any commits"
+fatal, as current master branch does not have any commits
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> echo 'Creating a new file named example.txt...'
+
+Creating a new file named example.txt...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> New-Item example.txt -ItemType "file"
+
+
+
+    Directory: C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          5/1/2024   9:57 PM              0 example.txt
+
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> echo 'File example.txt created.' | Out-File -Append "C:\Spring2024\ECE461L\HW1\git-1.txt"
+
+>> TerminatingError(Out-File): "The process cannot access the file 'C:\Spring2024\ECE461L\HW1\git-1.txt' because it is being used by another process."
+Out-File : The process cannot access the file 'C:\Spring2024\ECE461L\HW1\git-1.txt' because it is being used by another 
+process.
+At line:1 char:36
++ ... xt created.' | Out-File -Append "C:\Spring2024\ECE461L\HW1\git-1.txt"
++                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], IOException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+Out-File : The process cannot access the file 'C:\Spring2024\ECE461L\HW1\git-1.txt' because it is
+being used by another process.
+At line:1 char:36
++ ... xt created.' | Out-File -Append "C:\Spring2024\ECE461L\HW1\git-1.txt"
++                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], IOException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> echo 'Checking Git status after creating new file...'
+
+Checking Git status after creating new file...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git status
+
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        example.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> echo 'Adding file to staging area...'
+
+Adding file to staging area...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git add example.txt
+
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> echo 'File example.txt added to staging area.'
+File example.txt added to staging area.
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> echo 'Checking Git status after adding file...'
+
+Checking Git status after adding file...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git status
+
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   example.txt
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git status | Out-File -Append "C:\Spring2024\ECE461L\HW1\git-1.txt"
+
+>> TerminatingError(Out-File): "The process cannot access the file 'C:\Spring2024\ECE461L\HW1\git-1.txt' because it is being used by another process."
+Out-File : The process cannot access the file 'C:\Spring2024\ECE461L\HW1\git-1.txt' because it is being used by another 
+process.
+At line:1 char:14
++ git status | Out-File -Append "C:\Spring2024\ECE461L\HW1\git-1.txt"
++              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], IOException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+Out-File : The process cannot access the file 'C:\Spring2024\ECE461L\HW1\git-1.txt' because it is
+being used by another process.
+At line:1 char:14
++ git status | Out-File -Append "C:\Spring2024\ECE461L\HW1\git-1.txt"
++              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], IOException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> echo 'Committing file to the repository...'
+
+Committing file to the repository...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git commit -m "Add example.txt"
+
+[master (root-commit) 24c7dff] Add example.txt
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 example.txt
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> echo 'File example.txt committed to repository.'
+File example.txt committed to repository.
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> echo 'Checking Git status after commit...'
+
+Checking Git status after commit...
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> git status
+
+On branch master
+nothing to commit, working tree clean
+PS C:\Spring2024\ECE461L\HW1\git-katas\basic-commits\exercise> Stop-Transcript
+**********************
+Windows PowerShell transcript end
+End time: 20240501220229
+**********************
