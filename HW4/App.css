@@ -1,0 +1,59 @@
+.projects-container {
+  max-width: 800px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.project {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 0px;
+  background: #f7f7f7;
+  border-radius: 4px;
+}
+
+.project-details {
+  margin-bottom: 0px;       /* this piece of code determines gap between top and bottomg   */
+} 
+
+.project-header {
+  margin-bottom: 0px;
+}
+
+.project-header h2 {
+  display: inline; 
+  margin-right: 5px;
+}
+
+.hardware-set {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  background: #fff;
+  margin: 5px 0;
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
+}
+
+.hardware-set span {
+  flex-grow: 1;
+}
+
+input[type="text"], .check-in, .check-out {
+  margin-left: 5px;
+}
+
+
+.join, .leave {
+  margin-left: 5px;
+  padding: 5px 10px;
+}
+
+.project-actions {
+  display: flex;
+  justify-content: flex-end;
+}
